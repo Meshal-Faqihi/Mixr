@@ -1,22 +1,20 @@
 import os
-
+#from collections.abc import Mapping
+from sound import Sound
 import subprocess
 from tkinter import *
 import tkinter as tk
 
-####What is tk. ???!?!?!?
-#### what diffrant . and =  ????!?!?
+import ctypes
+MUTE = 0x8000
+SND_app = 0x80
+ctypes.windll.winmm.waveOutSetVolume(0,MUTE)
+#Sound.mute()
 
-def add_num():
-   num1 = int(Ent1.get())
-   result = num1 * 3.75
-   ansr.config(text="result"+str(result))
-
+exit()
 def open_app(path):
     os.startfile(path)
     
-
-
 wind = Tk()
 wind.title("Mixr ")
 wind.geometry("500x500+10+500")
@@ -25,8 +23,10 @@ title = Label(wind , text='Mixr',fg='gold', bg='black' , font=('tajawal ', 16,'b
 title.pack(fill=X)
 
 
-xbutton  = tk.Button(wind,bg='black', fg='white', text='Open EDGE', command= lambda: open_app(r'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe'))
+Edgebutton  = tk.Button(wind,bg='black', fg='white', text='Edge', command= lambda: open_app(r'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe'))
+Edgebutton.pack()
 
-xbutton.pack()
+Steambutton  = tk.Button(wind,bg='black', fg='white', text='Steam', command= lambda: open_app(r'C:\Program Files (x86)\Steam\steam.exe'))
+Steambutton.pack()
 
 wind.mainloop()
