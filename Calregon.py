@@ -28,11 +28,12 @@ Ent1 = tk.Entry(wind)
 Ent1.pack()
 
 
-mybutton = tk.Button(wind, text ='Click ',bg='black',fg='white',command=add_num)
-mybutton.pack()
+# mybutton = tk.Button(wind, text ='Click ',bg='black',fg='white',command=add_num)
+# mybutton.pack()
 
-##xbutton = tk.Button(wind, text ='Click ',bg='black',fg='white',command=open_app(r'C:\Program Files\VS Revo Group\Revo Uninstaller\RevoUnin.exe'))
-#xbutton.pack()
+xbutton  = tk.Button(wind, text='Open Steam', command= lambda: open_app(r'C:\Program Files\Mozilla Firefox\firefox.exe'))
+# xbutton = tk.Button(wind, text ='Click ',bg='black',fg='white',command=open_app(r'C:\Program Files\Mozilla Firefox\firefox.exe'))
+xbutton.pack()
 
 ansr = tk.Label(wind, text='eeeee')
 ansr.pack()
