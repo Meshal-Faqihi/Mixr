@@ -18,24 +18,15 @@ def open_app(path):
 
 
 wind = Tk()
-wind.title("Meshal ")
+wind.title("Mixr ")
 wind.geometry("500x500+10+500")
 wind.resizable(False,False) #Here cant change size 
-title = Label(wind , text='calculator',fg='gold', bg='black' , font=('tajawal ', 16,'bold'))
+title = Label(wind , text='Mixr',fg='gold', bg='black' , font=('tajawal ', 16,'bold'))
 title.pack(fill=X)
 
-Ent1 = tk.Entry(wind)
-Ent1.pack()
 
+xbutton  = tk.Button(wind,bg='black', fg='white', text='Open EDGE', command= lambda: open_app(r'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe'))
 
-# mybutton = tk.Button(wind, text ='Click ',bg='black',fg='white',command=add_num)
-# mybutton.pack()
-
-xbutton  = tk.Button(wind, text='Open Steam', command= lambda: open_app(r'C:\Program Files\Mozilla Firefox\firefox.exe'))
-# xbutton = tk.Button(wind, text ='Click ',bg='black',fg='white',command=open_app(r'C:\Program Files\Mozilla Firefox\firefox.exe'))
 xbutton.pack()
-
-ansr = tk.Label(wind, text='eeeee')
-ansr.pack()
 
 wind.mainloop()
