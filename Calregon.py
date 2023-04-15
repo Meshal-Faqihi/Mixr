@@ -1,21 +1,13 @@
 import os
-
 import subprocess
 from tkinter import *
 import tkinter as tk
 
-####What is tk. ???!?!?!?
-#### what diffrant . and =  ????!?!?
-
-def add_num():
-   num1 = int(Ent1.get())
-   result = num1 * 3.75
-   ansr.config(text="result"+str(result))
-
 def open_app(path):
     os.startfile(path)
-    
 
+def Mute():
+    os.system(r"C:\Users\mesh3\nircmd-x64\nircmd.exe mutesysvolume 1")
 
 wind = Tk()
 wind.title("Mixr ")
@@ -24,9 +16,12 @@ wind.resizable(False,False) #Here cant change size
 title = Label(wind , text='Mixr',fg='gold', bg='black' , font=('tajawal ', 16,'bold'))
 title.pack(fill=X)
 
+Edgebutton  = tk.Button(wind,bg='black', fg='white', text='Edge', command= lambda: open_app(r'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe'))
+Edgebutton.pack()
 
-xbutton  = tk.Button(wind,bg='black', fg='white', text='Open EDGE', command= lambda: open_app(r'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe'))
+Steambutton  = tk.Button(wind,bg='black', fg='white', text='Steam', command= lambda: open_app(r'C:\Program Files (x86)\Steam\steam.exe'))
+Steambutton.pack()
 
-xbutton.pack()
-
+Mute  = tk.Button(wind,bg='black', fg='white', text='Mute', command= Mute)
+Mute.pack()
 wind.mainloop()
