@@ -1,3 +1,6 @@
+from ctypes import cast, POINTER
+from comtypes import CLSCTX_ALL
+from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 import os
 import subprocess
 from tkinter import *
@@ -7,7 +10,16 @@ def open_app(path):
     os.startfile(path)
 
 def Mute():
-    os.system(r"C:\Users\mesh3\nircmd-x64\nircmd.exe mutesysvolume 1")
+   devices = AudioUtilities.GetSpeakers()
+   interface = devices.Activate(IAudioEndpointVolume._iid_ , CLSCTX_ALL, None)
+   volume = cast(interface, POINTER(IAudioEndpointVolume))
+   volume.SetMute(1, None)
+
+def UnMute():
+   devices = AudioUtilities.GetSpeakers()
+   interface = devices.Activate(IAudioEndpointVolume._iid_ , CLSCTX_ALL, None)
+   volume = cast(interface, POINTER(IAudioEndpointVolume))
+   volume.SetMute(0, None)
 
 wind = Tk()
 wind.title("Mixr ")
@@ -24,4 +36,7 @@ Steambutton.pack()
 
 Mute  = tk.Button(wind,bg='black', fg='white', text='Mute', command= Mute)
 Mute.pack()
+UnMute  = tk.Button(wind,bg='black', fg='white', text='UnMute', command= UnMute)
+UnMute.pack()
+
 wind.mainloop()
