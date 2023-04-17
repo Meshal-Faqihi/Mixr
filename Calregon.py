@@ -13,13 +13,14 @@ def Mute():
    devices = AudioUtilities.GetSpeakers()
    interface = devices.Activate(IAudioEndpointVolume._iid_ , CLSCTX_ALL, None)
    volume = cast(interface, POINTER(IAudioEndpointVolume))
-   volume.SetMute(1, None)
-
-def UnMute():
-   devices = AudioUtilities.GetSpeakers()
-   interface = devices.Activate(IAudioEndpointVolume._iid_ , CLSCTX_ALL, None)
-   volume = cast(interface, POINTER(IAudioEndpointVolume))
-   volume.SetMute(0, None)
+   unvolume = cast(interface, POINTER(IAudioEndpointVolume))
+   global oneButton_on
+   oneButton_on = not oneButton_on
+   if oneButton_on:
+      volume.SetMute(0, None)
+   else:
+      unvolume.SetMute(1, None)
+oneButton_on = True
 
 wind = Tk()
 wind.title("Mixr ")
@@ -36,7 +37,5 @@ Steambutton.pack()
 
 Mute  = tk.Button(wind,bg='black', fg='white', text='Mute', command= Mute)
 Mute.pack()
-UnMute  = tk.Button(wind,bg='black', fg='white', text='UnMute', command= UnMute)
-UnMute.pack()
 
 wind.mainloop()
